@@ -1,0 +1,23 @@
+<!-- React JS가 HTML을 생성 -> react-dom이 이 역할을 수행 -->
+<!-- React JS는 엔진과 같은 역할, interactive한 UI를 만들어주는 라이브러리 -->
+<!-- react-dom은 모든 React element들을 HTML body에 두는 역할, 라이브러리 또는 패키지 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React first day</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script>
+    const root = document.getElementById("root"); // HTML div 태
+    const span = React.createElement("span");
+    ReactDOM.render(span, root) // span을 root에 배치해 달라는 코드(쉼표 뒤에는 태그 위치를)
+    // React element를 가지고 HTML로 만들어 배치(render = 사용자에게 보여준다)
+  </script>
+</body>
+</html>
