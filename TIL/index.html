@@ -17,12 +17,14 @@
     // JS가 element 생성하고 React JS가 그것을 HTML로 번역
     // React JS는 업데이트 해야 하는 HTML을 업데이트 할 수 있음
     const root = document.getElementById("root"); // HTML div 태그
-    const h3 = React.createElement("h3", null, "Hello, I'm span");
+    const h3 = React.createElement("h3", {
+      onMouseEnter: () => console.log("mouse enter"),
+    }, "Hello, I'm h3");
     // React element를 가지고 HTML로 만들어 배치(render = 사용자에게 보여준다)
     const btn = React.createElement("button", 
     {
       onClick: () => console.log("I'm clicked!"),
-    }, 
+    },
     "Click me!");
     const container = React.createElement("div", null, [h3, btn]); // span, button 둘 다 render 하고 싶을 때
     // ReactDOM.render(span, root) - span을 root에 배치해 달라는 코드(쉼표 뒤에는 태그 위치를)
