@@ -10,15 +10,15 @@
   <title>React first day</title>
 </head>
 <body>
+  <div id="root"></div>
+  <!-- 비어있는 div는 ReactDOM이 React element들을 가져다 놓을 곳 -->
+</body>
   <!-- React JS: element를 생성하고 event listener 더하는 것을 돕는 역할 -->
   <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <!-- React DOM: React element들을 가져다가 HTML로 바꾸는 역할 -->
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <!-- Babel: 코드를 변환해주는 기능(JSX로 적은 코드를 브라우저가 이해할 수 있는 형태로 바꿔줌) -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-  <div id="root"></div>
-  <!-- 비어있는 div는 ReactDOM이 React element들을 가져다 놓을 곳 -->
   <script type="text/babel">
     const $root = document.getElementById("root"); // HTML div 태그
     // JSX - 자바스크립트의 확장 문법, HTML과 매우 비슷하게 생겼으며 JSX로 React 요소를 만드는 게 편리함
@@ -50,5 +50,4 @@
     // const container = React.createElement("div", null, [Title, Button]);
     ReactDOM.render(<Container />, $root) // React element들을 $root(<div>) 안에서 보여주라는 의미(렌더링)
   </script>
-</body>
 </html>

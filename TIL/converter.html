@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit Conversion App</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const $root = document.getElementById("root");
+  function App(){
+    const [amount, setAmount] = React.useState(0);
+    const [flipped, setFlipped] = React.useState(false); // flipped = false -> Hours는 disabled={true}
+    const onChange = (e) => {
+      setAmount(e.target.value); // e.target.value = minutes
+    };
+    const reset = () => setAmount(0); // 초기화
+    // flipped 값 반전 - flipped이 true이면 false
+    const onFlip = () => setFlipped((current) => !current); // current = false
+    // 안전하게 현재 state 값 넣어주고, 결과는 현재값의 반대
+    return ( // App 함수의 기능
+      // lable을 클릭하면 input 창 활성화
+      // disabled = true - > 비활성화
+      <div>
+        <h3>Unit Converter</h3>
+        <div>
+          <label htmlFor="minutes">Minutes</label>
+          <input defaultValue={amount} id="minutes" placeholder="Minutes" type="number" onChange={onChange} disabled={flipped}/>
+        </div>
+        <div>
+          <label htmlFor="hours">Hours</label>
+          <input defaultValue={flipped ? amount : Math.round(amount / 60)} id="hours" placeholder="Hours" type="number" onChange={onChange} disabled={!flipped}/>
+        </div>
+        <button onClick={reset}>Reset</button>
+        <button onClick={onFlip}>Flip</button>
+      </div>
+    );
+  }
+  ReactDOM.render(<App />, $root);
+</script>
+</html>
