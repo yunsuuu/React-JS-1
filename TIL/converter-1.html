@@ -11,15 +11,16 @@
 </body>
 <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<!-- prop type을 알려줌 --> 
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   const $root = document.getElementById("root");
   // 컴포넌트 - JSX를 반환하는 함수
-  function Btn({ text, changeValue }){
-    // 인자(argument) = props, Btn에 붙은 props 네임들 
-    // 인자 자리에 오브젝트 형태로 props를 바로 꺼내 쓰기
+  function Btn({ text, fontSize }){ // 자식함수
+    // 아래 Btn 컴포넌트에 달아준 prop들을 가지고 오기, prop들은 오브젝트 형태로 인자에 {}를 써서 값을 불러올 수 있음
     return <button
-    onClick={changeValue}
+    // onClick={changeValue} // 아래 Btn 컴포넌트가 가지고 있는 prop을 button 태그가 가지고 있는 onClick 이벤트리스너로서 사용
     style={{
       border: "0px",
       borderRadius: "10px",
@@ -27,17 +28,23 @@
       marginRight: "10px",
       color: "#fff",
       backgroundColor: "lightpink",
+      fontSize, // fontSize: 18 과 동일
     }}
     >{text}</button>
   }
-  function App(){
-    const [value, setValue] = React.useState("Save Changes");
-    const changeValue = () => setValue("Revert Changes"); // Save Changes -> Revert Changes로 값 체인지
+  // const MemorizedBtn = React.memo(Btn); // props가 변경되지 않는다면 리렌더링 필요 없음
+  // 컴포넌트가 중복되어 리렌더링하지 않게 해줌, 필요한 컴포넌트만 리렌더링
+  // 컴퓨터 속도 느림을 방지할 수 있음
+  Btn.propTypes = {
+    text: PropTypes.string,
+    fontSize: PropTypes.number,
+  };
+  function App(){ // 부모함수
     return (
       // Btn 속성의 text는 임의로 지은 것, value, tomato, banana 등 어떤 문자가 와도 상관없음
+      // onClick을 컴포넌트에 넣으면 이벤트리스너가 아닌 하나의 prop, 이벤트리스너는 위의 function Btn 함수 return에 달아야함
       <div>
-        <Btn text={value} changeValue={changeValue} />
-        <Btn text="Continue" />
+        <Btn text="Save Changes" fontSize={18}/>
       </div>
     );
   }
