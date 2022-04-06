@@ -36,7 +36,7 @@
   // 컴포넌트가 중복되어 리렌더링하지 않게 해줌, 필요한 컴포넌트만 리렌더링
   // 컴퓨터 속도 느림을 방지할 수 있음
   Btn.propTypes = { // PropTypes - 각기 다른 타입들을 검사하는 게 가능
-    text: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired, // 텍스트는 필수, 폰트사이즈는 옵션
     fontSize: PropTypes.number,
   };
   function App(){ // 부모함수
